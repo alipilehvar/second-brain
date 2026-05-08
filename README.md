@@ -1,360 +1,197 @@
-# Second Brain X — AI-Powered Work OS
+# Second Brain X — Your AI-Powered Work Assistant
 
-> PARA + LLM Wiki + live MCP data. One command builds your entire second brain.  
-> **Setup time: under 1 hour. Zero coding required.**
-
----
-
-## What Is This?
-
-A system that connects your notes, email, Slack, calendar, and project tickets into a single AI-queryable workspace — one that gets smarter the more you use it.
-
-The idea comes from two sources:
-
-**[Andrej Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)** — instead of asking an LLM to answer questions from raw documents (RAG), have it *build and maintain a wiki* from those documents. The wiki compounds. Every source you add makes every related page richer. Six months in, your domain knowledge is already in the wiki — not scattered across docs and your head.
-
-**[Tiago Forte's PARA](https://fortelabs.com/blog/para/)** — all information lives in one of four buckets: **P**rojects (active work), **A**reas (ongoing responsibilities), **R**eference (knowledge), **A**rchive (completed). Everything has one right place. No filing paralysis.
-
-**Second Brain X adds what neither covers:** live MCP connections to your actual tools — Gmail, Slack, Jira, Calendar, Google Drive, Granola. Your brain knows what's in your inbox right now, not just what you've written down.
-
-> **"PARA gives it structure. LLM Wiki gives it memory. MCP gives it live data. Together: a second brain that actually works."**
+> **For anyone who feels buried in email, meetings, Slack, and scattered notes.**  
+> One setup. Every morning, one command organizes your entire day.
 
 ---
 
-## How It Works — The Key Concepts
+## What Does This Do?
 
-### Raw vs. Wiki
+Every morning you type one word — `alfred` — and your AI assistant:
 
-The most important distinction in the system:
+- **Reads your email** and surfaces what needs your attention (your most important people first)
+- **Checks your calendar** and flags back-to-back meetings or overloaded days
+- **Scans your Slack** for messages that need a response
+- **Reviews your project board** (Jira, Linear, or Asana) — your team's progress, blockers, what's due
+- **Reads your meeting transcripts** (via Granola) and pulls out action items you need to follow up on
+- **Writes one clean daily note** with everything organized in one place
 
-**`3 Reference/Raw/`** — your **inbox for knowledge**. Drop anything here: web clips, Drive links, meeting notes, PDFs, articles. Nothing is processed or summarized yet. This is where things *land*.
+No more switching between five apps to figure out what to do. One command. One note. Day organized.
 
-**`3 Reference/Wiki/`** — your **living knowledge base**. This is where things *live*. Each page is built and maintained by Claude from your Raw material. Run `wikify [filename]` and Claude reads the raw file, extracts what's useful, and either creates a new wiki page or *appends* to an existing one — it never overwrites. Come back six months later and every source you've added on a topic is synthesized into one place.
-
-```
-You drop a doc into Raw/         →  wikify  →  Wiki page created (or updated)
-You clip a web article            →  wikify  →  New insights appended to existing page
-You paste meeting notes           →  wikify  →  Wiki gets smarter
-```
-
-The wiki is the engine. It gets more useful every day you feed it.
-
-### CLAUDE.md — The Operating Manual
-
-A file called `CLAUDE.md` lives at your vault root. Claude Code reads it automatically at the start of every session. It tells Claude who you are, who your VIPs are, what your priorities are, and how the system works. You evolve it over time. This is what makes Claude a disciplined work partner instead of a generic assistant.
-
-### Commands
-
-25 named commands live in `.claude/commands/`. You just type the name — no prefix. Each command is a markdown file with full instructions for what Claude should do. They work anywhere inside your vault.
-
----
-
-## Folder Structure
-
-```
-My Second Brain/
-│
-├── CLAUDE.md                     ← AI operating manual (auto-loaded every session)
-├── Home.md                       ← Dashboard with live Dataview queries
-│
-├── 1 Projects/          🔴       ← Active work with deadlines
-│   ├── Priority/                    score 4-5: do now
-│   ├── Important/                   score 2-3: do soon
-│   └── Idea Dump/                   score 1: someday/maybe
-│
-├── 2 Areas/             🔵       ← Ongoing responsibilities
-│   ├── Role & Strategy/
-│   ├── Team/
-│   ├── Stakeholders/
-│   └── Hiring/
-│
-├── 3 Reference/         🟢       ← All knowledge
-│   ├── Raw/                         ← INBOX: unprocessed drops (clips, imports, notes)
-│   └── Wiki/                        ← BRAIN: LLM-built pages, cumulative, never overwritten
-│
-├── 4 Archives/          ⬜       ← Completed / inactive projects
-│
-├── 5 People/            🟣       ← One page per contact (your CRM)
-│   ├── VIP/                         key stakeholders — surface FIRST in every digest ⭐
-│   └── Team/                        direct reports — surface SECOND ⭐
-│
-├── 6 Reviews/           🟡       ← Time-based cadence
-│   ├── Daily/                       daily digest (cumulative — carry-forwards only)
-│   └── Weekly/                      weekly retro
-│
-├── 7 Metrics & KPIs/    🟠       ← Data, reports, KPIs (optional — skip if not applicable)
-│
-├── 8 [YOUR NAME]'S BRAIN/ 🩵    ← System config (loads last, sorts last)
-│   ├── About [You].md               your private profile (gitignored)
-│   ├── Schema.md                    frontmatter contracts for every file type
-│   ├── Command Center.md            all commands reference
-│   └── Agents/                      agent spec files
-│
-├── Granola/                      ← Raw meeting transcripts (never modify)
-└── .claude/commands/             ← All 25 named commands
-```
-
----
-
-## Commands
-
-| Command | What It Does |
-|---------|-------------|
-| `alfred` | Morning briefing — email, calendar, Slack, Jira, meeting transcripts, carry-forwards → one daily note |
-| `wikify [file]` | Synthesize raw file into a cumulative wiki page (appends, never overwrites) |
-| `1on1 [name]` | Pre-meeting brief — open action items, last notes, recent Slack/email |
-| `email` | Triage unread email — VIPs first, draft responses |
-| `slack` | Triage Slack DMs and @mentions — VIPs first |
-| `jira` | Sprint board — your tickets + team progress + blockers |
-| `deepdive [topic]` | Multi-source research → A/B/C recommendation with confidence level |
-| `no [request]` | Help decline a request — classify type, suggest script, draft the message |
-| `closeday` | EOD capture — ideas, follow-ups, tomorrow pre-loaded |
-| `weekly` | Synthesize all daily notes into weekly review |
-| `retro` | Leadership self-score + NOs said this week + one change for next week |
-| `clip [URL]` | Save any Drive/web link to Raw/ (stays live — fetches latest on wikify) |
-| `note [text]` | Quick capture → Raw/ |
-| `person [name]` | Create or update a People page |
-| `new [name] [1-5]` | Create a new project with priority score |
-| `status [project]` | One-paragraph project update ready to share |
-| `exec-brief [topic]` | 1-page brief: headline, 3 bullets, recommendation |
-| `tldr` | Summarize any doc in 5 bullets |
-| `archive [name]` | Move project to Archives/ with closure summary |
-| `lint` | Vault health check — stale notes, broken links, unprocessed Raw files |
-| `commands` | Print the full command reference |
+Beyond the morning routine, it also:
+- Preps you for any 1:1 meeting in 30 seconds (`1on1 [name]`)
+- Helps you say no to requests gracefully (`no [describe the ask]`)
+- Turns any document, article, or meeting note into a searchable wiki page (`wikify`)
+- Keeps a running relationship file on every person you work with
 
 ---
 
 ## Install the Plugin
 
-### Option A — One line in your terminal (works today)
+### No coding needed — three downloads and one command
 
-```bash
+**Step 1 — Download these three apps:**
+
+| App | Download | What It Does |
+|-----|----------|-------------|
+| **Obsidian** | [obsidian.md](https://obsidian.md) | Your notes viewer — free, Mac/Windows/Linux |
+| **Claude Code** | [claude.ai/code](https://claude.ai/code) | The AI that runs everything — desktop app or terminal |
+| **Granola** | [granola.so](https://granola.so) | Records your meetings silently — Mac |
+
+**Step 2 — Connect your tools** (10 min, no coding):
+
+Go to **[claude.ai](https://claude.ai) → Settings → Integrations** and click Add next to:
+- Gmail (or Google Workspace)
+- Google Calendar
+- Slack
+- Jira, Linear, or Asana (whichever your team uses)
+- Granola
+
+Each one is just signing in with your work account. No API keys. No code. One-time setup.
+
+**Step 3 — Install the plugin:**
+
+Open Claude Code, then paste this one line and press Enter:
+
+```
 curl -fsSL https://raw.githubusercontent.com/alipilehvar/second-brain/main/install.sh | bash
 ```
 
-Then open Claude Code in any empty folder and type:
+**Step 4 — Create an empty folder, open Claude Code in it, and type:**
 
 ```
 setup-brain
 ```
 
-That's it. The wizard runs, asks you 10 questions, and builds everything.
+Claude will ask you 10 simple questions (your name, your role, who your key people are, which tools you use). Answer them. Claude builds your entire workspace in about 5 minutes.
 
-### Option B — Claude Code Marketplace (coming soon)
-
-Once listed in the marketplace, anyone at your company can install it with:
-
-```bash
-claude plugin install second-brain
-```
-
-Or from the Claude Code UI: **Settings → Plugins → Browse → search "second-brain" → Install**
-
-Then type `setup-brain` to run the wizard.
-
----
-
-## Full Setup Guide
-
-Follow these steps in order. Takes about 45–60 minutes total.
-
----
-
-### Step 1 — Install Obsidian (5 min)
-
-Obsidian is the app you use to read and browse your vault. Your vault is just a folder of markdown files — Obsidian is the interface.
-
-1. Download from **[obsidian.md](https://obsidian.md)** (free — Mac / Windows / Linux)
-2. Install and open it
-3. Click **"Open folder as vault"** → create a new empty folder (e.g. `~/Desktop/My Second Brain`)
-4. Go to **Settings → Community Plugins → Turn on community plugins**
-5. Click **Browse** and install:
-   - **Dataview** — powers live dashboard queries in Home.md
-   - **Templater** — advanced templates
-   - **Calendar** — visual date navigation
-
----
-
-### Step 2 — Install Claude Code (10 min)
-
-Claude Code is the AI that reads and writes your vault. It runs in your terminal alongside Obsidian.
-
-1. Install **Node.js** if you don't have it:
-   - Mac: `brew install node` or download from [nodejs.org](https://nodejs.org)
-   - Windows: download installer from [nodejs.org](https://nodejs.org)
-
-2. Install Claude Code:
-   ```bash
-   npm install -g @anthropic-ai/claude-code
-   ```
-
-3. Create an account at **[claude.ai](https://claude.ai)** (Pro plan recommended for heavy daily use)
-
-4. Open Claude Code inside your vault folder:
-   ```bash
-   cd ~/Desktop/My\ Second\ Brain
-   claude
-   ```
-   It will open a browser window to authenticate — sign in with your claude.ai account.
-
-> **Tip:** Keep Obsidian open on one side of your screen and the Claude Code terminal on the other. Claude writes; you read in real time.
-
----
-
-### Step 3 — Install Granola (5 min)
-
-Granola runs silently during meetings and produces structured transcripts. These feed `alfred` automatically — no manual note-taking.
-
-1. Download from **[granola.so](https://granola.so)** (Mac; Windows coming soon)
-2. Install and open it
-3. Go to **Preferences → Account → Add your work email** (not personal Gmail)
-4. Grant microphone access when prompted
-5. Granola auto-detects your Google Calendar meetings and starts capturing when you join calls
-
-> ⚠️ **Connect your work email** — or transcripts won't match your calendar.
-
----
-
-### Step 4 — Connect Your Tools to Claude (10 min)
-
-MCP connections give Claude live access to your tools. Set up once — they persist forever.
-
-**Go to: [claude.ai](https://claude.ai) → Settings → Integrations**
-
-Click **Add** next to each and sign in with your work account:
-
-| Tool | What to Click | What It Powers |
-|------|--------------|----------------|
-| **Gmail** | Add Google → sign in with work email | `alfred`, `email` — reads threads, drafts replies |
-| **Google Calendar** | Included with Google | `alfred` — reads events, flags back-to-backs |
-| **Google Drive** | Included with Google | `clip`, `wikify` — fetches live doc versions |
-| **Slack** | Add Slack → sign in with your workspace | `alfred`, `slack` — reads DMs and @mentions |
-| **Jira** | Add Atlassian → sign in | `alfred`, `jira`, `1on1` — sprint board and tickets |
-| **Linear** | Add Linear → sign in | Same as Jira (use whichever your team uses) |
-| **Granola** | Add Granola → sign in with work email | `alfred` — meeting transcripts → action items |
-
-> No API keys. No code. Just OAuth. Each takes ~30 seconds. They reconnect automatically each session.
-
----
-
-### Step 5 — Install the Setup Wizard (1 min)
-
-Run this in your terminal:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/alipilehvar/second-brain/main/install.sh | bash
-```
-
-This installs the `setup-brain` command globally in Claude Code. You'll see:
-```
-✅ Plugin installed successfully!
-```
-
----
-
-### Step 6 — Build Your Second Brain (5–10 min)
-
-Open Claude Code in your vault folder:
-
-```bash
-cd ~/Desktop/My\ Second\ Brain
-claude
-```
-
-Then type:
-```
-setup-brain
-```
-
-Claude asks you **10 questions** one at a time — name, role, company, team, VIP stakeholders, project management tool. Answer them, then Claude builds everything automatically:
-
-- 30+ folders with the PARA structure
-- 25 commands in `.claude/commands/`
-- A personalized `CLAUDE.md` operating manual
-- People pages for each VIP and team member
-- Wiki starter pages (Leadership OS, Say No Playbook)
-- Home.md dashboard with Dataview queries
-- `.gitignore` so your personal files never get committed
-
-Takes about 5 minutes.
-
----
-
-### Step 7 — Open in Obsidian and Activate Folder Colors (2 min)
-
-1. In Obsidian: **File → Open Vault → select your vault folder**
-2. **Settings → Appearance → CSS Snippets → toggle `folder-colors` ON**
-
-Your folders become color-coded — red for active work, green for knowledge, purple for people, etc.
-
----
-
-### Step 8 — Run Your First alfred
-
-In the Claude Code terminal:
+**Step 5 — Open the folder in Obsidian and run:**
 
 ```
 alfred
 ```
 
-Claude will pull everything — email, calendar, Slack, Jira, Granola transcripts — and write a single structured daily note. Your day is organized.
+That's it. You're set up.
 
 ---
 
-## Your Daily Workflow
+## What It Builds For You
 
+When you run `setup-brain`, Claude creates your full workspace automatically:
+
+- **Your daily dashboard** — one Home page that shows your active projects, open items, and key contacts
+- **A folder for every person you work with** — every meeting note, action item, and piece of context about them, all in one place
+- **A living knowledge base** (the Wiki) — every document or article you feed it gets synthesized into a searchable page that gets smarter over time
+- **25 ready-to-use commands** — for email triage, meeting prep, project updates, weekly reviews, and more
+
+Everything stays on your computer. Nothing is sent anywhere except through the tools you already use (Gmail, Slack, etc.).
+
+---
+
+## What You'll Use Every Day
+
+| When | Type This | What Happens |
+|------|-----------|-------------|
+| Every morning | `alfred` | Digest of email, calendar, Slack, meetings — all in one note |
+| Before any 1:1 | `1on1 [person's name]` | Brief with their open items, last meeting notes, what to cover |
+| Someone asks you to do something you can't | `no [describe the ask]` | Drafts a polite decline with the right framing |
+| End of day | `closeday` | Captures ideas, follow-ups, pre-loads tomorrow |
+| You read something worth saving | `clip [link]` | Saves it to your knowledge base |
+| End of week | `weekly` | Synthesizes your week into one summary |
+
+---
+
+## How the Folders Work
+
+Your workspace uses a simple 4-bucket system (called PARA) — everything has exactly one home:
+
+| Folder | What Goes Here |
+|--------|---------------|
+| **1 Projects** | Active work with a deadline — things you're doing right now |
+| **2 Areas** | Ongoing responsibilities — your role, your team, hiring, strategy |
+| **3 Reference** | Knowledge — two sub-folders (see below) |
+| **4 Archives** | Finished work — out of sight, but searchable |
+| **5 People** | One page per person you interact with — your built-in CRM |
+| **6 Reviews** | Daily notes, weekly summaries |
+
+### Raw vs. Wiki — the most important distinction
+
+Inside **3 Reference** there are two folders:
+
+**Raw/** is your inbox for knowledge. Drop anything here — articles, links, meeting notes, PDFs. Nothing is processed yet. This is where things *land*.
+
+**Wiki/** is your brain. This is where things *live*. Run `wikify [filename]` and Claude reads whatever you dropped in Raw, extracts what's useful, and either creates a new page or adds to an existing one — it never overwrites. Every source you add makes your wiki smarter. Six months in, your knowledge on any topic is already synthesized and searchable — you never have to re-derive it from scratch.
+
+---
+
+## For Technical Users
+
+<details>
+<summary>Terminal install, developer setup, Snowflake, and advanced configuration</summary>
+
+### Terminal Install
+
+```bash
+npm install -g @anthropic-ai/claude-code
+curl -fsSL https://raw.githubusercontent.com/alipilehvar/second-brain/main/install.sh | bash
+mkdir ~/Desktop/MyBrain && cd ~/Desktop/MyBrain && claude
 ```
-Morning   (5 min): alfred
-During day:        1on1 · email · slack · jira · clip · deepdive · no
-End of day (5 min): closeday
-Friday:            weekly → retro
-Weekly:            lint
+Then type `setup-brain`.
+
+### Snowflake (data teams)
+
+```bash
+pip3 install snowflake-connector-python
 ```
+
+Create `~/.snowflake/connections.toml`:
+```toml
+[default]
+account = "YOUR-ACCOUNT-ID"
+user = "YOUR.EMAIL@COMPANY.COM"
+authenticator = "externalbrowser"
+role = "YOUR_ROLE"
+warehouse = "YOUR_WAREHOUSE"
+```
+
+Enables data warehouse queries directly from Claude.
+
+### Chrome Web Clipper
+
+Chrome Web Store → "Obsidian Web Clipper" → set default folder to `3 Reference/Raw/` → clip any page in one click.
+
+### CLAUDE.md
+
+The full operating manual template is at [`CLAUDE.md.template`](CLAUDE.md.template) — 23 rules covering Granola indexing, People system, project tool integration, and the automation hook.
+
+### Plugin Structure
+
+See [`plugin/README.md`](plugin/README.md) for plugin manifest and marketplace submission details.
+
+</details>
 
 ---
 
 ## The Compound Effect
 
 ```
-Day 1:    wikify one doc → 1 wiki page
-Week 1:   5 alfreds → carry-forward loop runs itself
-Month 1:  wiki grows — every new source enriches existing pages
+Day 1:    Save one article → wikify → 1 wiki page
+Week 1:   5 mornings of alfred → carry-forward loop runs itself
+Month 1:  Wiki grows — every new source enriches existing pages
 Month 3:  15+ pages cross-referencing each other → knowledge graph
-Month 6:  ask any question about your domain → answer already in the wiki
-Year 1:   new teammate → onboard from wiki → 2 weeks instead of 6 months
+Month 6:  Ask any question about your work → answer already in the wiki
+Year 1:   New team member → onboard from wiki → days instead of months
 ```
 
 ---
 
-## The .gitignore
+## Further Reading
 
-Personal files are protected automatically — they will never be committed:
-
-```
-5 People/VIP/       ← your stakeholder notes
-5 People/Team/      ← your team notes
-6 Reviews/          ← daily and weekly reviews
-1 Projects/         ← your active work
-2 Areas/            ← your responsibilities
-3 Reference/Raw/    ← your unprocessed inbox
-8 */About *.md      ← your private profile
-8 */Memory.md       ← AI session memory
-Granola/            ← meeting transcripts
-```
-
-Only the structure, commands, wiki pages, and HOW TO BUILD ME docs get committed — nothing personal.
-
----
-
-## Deeper Reading
-
-| Doc | What It Covers |
-|-----|---------------|
-| [`HOW TO BUILD ME/17 HOW KNOW - GitHub Gist (Short).md`](HOW%20TO%20BUILD%20ME/17%20HOW%20KNOW%20-%20GitHub%20Gist%20(Short).md) | Short overview (~250 lines) — shareable with anyone |
-| [`HOW TO BUILD ME/16 HOW KNOW - Professional Second Brain.md`](HOW%20TO%20BUILD%20ME/16%20HOW%20KNOW%20-%20Professional%20Second%20Brain.md) | Full guide — architecture, design principles, daily cadence, compound effect |
-| [`CLAUDE.md.template`](CLAUDE.md.template) | Full CLAUDE.md template with all rules and personalization guide |
-| [`HOW TO BUILD ME/05 MCP Connections.md`](HOW%20TO%20BUILD%20ME/05%20MCP%20Connections.md) | MCP troubleshooting and advanced setup |
-| [`HOW TO BUILD ME/00 Bootstrap Prompt.md`](HOW%20TO%20BUILD%20ME/00%20Bootstrap%20Prompt.md) | The full bootstrap prompt you can paste directly into Claude Code |
+| Doc | Best For |
+|-----|---------|
+| [`HOW TO BUILD ME/17 HOW KNOW - GitHub Gist (Short).md`](HOW%20TO%20BUILD%20ME/17%20HOW%20KNOW%20-%20GitHub%20Gist%20(Short).md) | Quick overview — shareable with anyone |
+| [`HOW TO BUILD ME/16 HOW KNOW - Professional Second Brain.md`](HOW%20TO%20BUILD%20ME/16%20HOW%20KNOW%20-%20Professional%20Second%20Brain.md) | Full concept guide — architecture, design, daily cadence |
+| [`HOW TO BUILD ME/05 MCP Connections.md`](HOW%20TO%20BUILD%20ME/05%20MCP%20Connections.md) | Tool connection troubleshooting |
 
 ---
 
