@@ -59,17 +59,11 @@ mkdir -p \
   "5 People/VIP" \
   "5 People/Team" \
   "6 Reviews/Daily" \
-  "6 Reviews/Team" \
   "6 Reviews/Weekly" \
-  "7 Metrics & KPIs/WBR" \
-  "7 Metrics & KPIs/MBR" \
-  "7 Metrics & KPIs/QBR" \
-  "7 Metrics & KPIs/Anomalies" \
-  "7 Metrics & KPIs/Metric Definitions" \
+  "7 Reports" \
   "8 [FIRSTNAME]'S BRAIN/Agents" \
   ".claude/commands" \
   ".obsidian/snippets" \
-  "HOW TO BUILD ME" \
   "Granola/Transcripts"
 ```
 
@@ -99,9 +93,8 @@ Work second brain for [Full Name], [Role] at [Company].
 | `5 People/VIP/[VIP names]` | VIP stakeholders — surface FIRST ⭐ |
 | `5 People/Team/[Team names]` | Direct reports — surface SECOND ⭐ |
 | `6 Reviews/Daily/` | Cumulative daily digest — newest first |
-| `6 Reviews/Team/` | Team sprint snapshot — daily file |
 | `6 Reviews/Weekly/` | Weekly retro + Leadership OS scores |
-| `7 Metrics & KPIs/` | WBR, MBR, QBR, Anomalies, Metric Definitions |
+| `7 Reports/` | Reports and data (optional — use as needed) |
 | `8 [FIRSTNAME]'S BRAIN/` | Schema, About [First Name], Memory, Agents, Command Center |
 
 ## Core Rules
@@ -114,6 +107,26 @@ Work second brain for [Full Name], [Role] at [Company].
 7. Coach [First Name] to say NO when overcommitting — use `3 Reference/Wiki/Say No Playbook.md`
 8. Flag hedging language in leadership emails
 [IF JIRA/LINEAR/ASANA: 9. [Tool] board: [Board URL]]
+
+## Granola & Meeting Rules
+- All meeting transcripts live in `Granola/Transcripts/` — read directly as files
+- After any 1:1 transcript: update the person's page (notes + action items) AND add to daily digest
+- After any team meeting transcript: update team standup log AND add to daily digest
+- Every transcript routes to: (1) relevant People page, (2) daily digest, (3) project file if applicable
+- Mark transcripts as indexed in `~/.claude/granola_indexed.txt` after processing
+
+## 1:1 Intelligence Rules
+- Every person with a recurring 1:1 gets a folder: `5 People/[area]/[Name]/`
+- Inside each folder: `[Name].md` (cumulative WIKI) + `1on1-Prep-YYYY-MM-DD.md` per meeting
+- Before a 1:1: read their WIKI + recent Granola transcripts + Jira tickets + recent Slack/email
+- After a 1:1: append notes to their WIKI, check off completed items, log new action items
+- `1on1 [name]` = generate prep brief; after meeting = update WIKI
+
+## Raw → Wiki → Projects Rules
+- Any document dropped in `Raw/` becomes source material — never modify Raw files directly
+- `wikify [file]` synthesizes Raw content into `Wiki/` — always appends, never overwrites
+- Projects in `1 Projects/` can reference Wiki pages for context — `deepdive` pulls both automatically
+- Wiki pages accumulate a `## Changelog` section logging every wikify operation
 ```
 
 ### 2c. Create About [First Name].md
@@ -233,12 +246,8 @@ In `8 [FIRSTNAME]'S BRAIN/Agents/`:
 5 People/VIP/
 5 People/Team/
 6 Reviews/Daily/
-6 Reviews/Team/
+
 6 Reviews/Weekly/
-7 Metrics & KPIs/WBR/
-7 Metrics & KPIs/MBR/
-7 Metrics & KPIs/QBR/
-7 Metrics & KPIs/Anomalies/
 1 Projects/Priority/
 1 Projects/Important/
 1 Projects/Idea Dump/
