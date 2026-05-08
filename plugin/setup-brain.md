@@ -356,20 +356,40 @@ Show this message:
   Connect Your Tools (5 minutes)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Go to: claude.ai → Settings → Integrations
+First, check what's already connected. Type this in Claude Code:
 
-Connect these in order:
+  /mcp
 
-  ☐ Google (Gmail + Calendar + Drive — one connection)
-  ☐ Slack
-  ☐ Atlassian (Jira + Confluence — one connection)
-  ☐ Granola (if installed)
+You'll see a list of all connected tools and their status (connected / not connected).
 
-That's it — no API keys, no code. Just OAuth.
+──────────────────────────────────────────────
 
-Full guide: HOW TO BUILD ME/05 MCP Connections.md
+Next, connect anything that's missing. Go to:
+
+  claude.ai → Settings → Integrations
+
+Connect these in order — each one is just signing in with your work account:
+
+  ☐ Google        → Gmail + Calendar + Drive (one connection)
+  ☐ Slack         → your work workspace
+  ☐ Atlassian     → Jira + Confluence (one connection)
+  ☐ Linear        → if your team uses Linear instead of Jira
+  ☐ Granola       → if you've installed Granola for meeting transcripts
+
+No API keys. No code. Just OAuth sign-in — takes about 30 seconds per tool.
+
+──────────────────────────────────────────────
+
+After connecting, come back to Claude Code and run /mcp again to confirm
+everything shows as connected:
+
+  /mcp
+
+All green? You're ready to run your first alfred.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
+
+After showing the message, pause and wait. Tell the user: "Take a few minutes to connect your tools at claude.ai → Settings → Integrations. Come back here and type `/mcp` to check your connections, or type `done` when you're ready to continue."
 
 ---
 
@@ -391,7 +411,10 @@ Count files created and print a build report:
   1. Open this folder in Obsidian
   2. Enable CSS: Settings → Appearance → CSS Snippets → folder-colors ✓
   3. Install Obsidian plugins: Dataview, Templater (Community Plugins)
-  4. Connect MCP servers at claude.ai/settings → Integrations
+  4. Connect tools: claude.ai → Settings → Integrations
+     (Gmail, Slack, Jira/Linear, Granola — each takes 30 seconds)
+  5. Run /mcp in Claude Code to confirm all tools are connected
+  6. Run your first: alfred
   5. Fill in your Work Personality in About [Name].md
   6. Run your first: alfred
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

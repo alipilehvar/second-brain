@@ -38,7 +38,11 @@ Beyond the morning routine, it also:
 | **Claude Code** | [claude.ai/code](https://claude.ai/code) | The AI that runs everything — desktop app or terminal |
 | **Granola** | [granola.so](https://granola.so) | Records your meetings silently — Mac |
 
-**Step 2 — Connect your tools** (10 min, no coding):
+**Step 2 — Check what's already connected:**
+
+In Claude Code, type `/mcp` — this shows all your connected tools and their status. Connect anything missing in the next step.
+
+**Step 3 — Connect your tools** (10 min, no coding):
 
 Go to **[claude.ai](https://claude.ai) → Settings → Integrations** and click Add next to:
 - Gmail (or Google Workspace)
