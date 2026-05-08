@@ -5,6 +5,15 @@
 
 ---
 
+## 👉 Where to Start
+
+| I am... | Go here |
+|---------|---------|
+| **Not technical** (VP, exec, manager, non-engineer) | **[START-HERE-NON-TECHNICAL.md](START-HERE-NON-TECHNICAL.md)** — plain English, 10 steps, no code |
+| **Technical** (engineer, developer, data analyst) | Keep reading below |
+
+---
+
 ## What Does This Do?
 
 Every morning you type one word — `alfred` — and your AI assistant:
