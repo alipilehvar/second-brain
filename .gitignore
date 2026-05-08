@@ -1,0 +1,29 @@
+# Personal vault content — never commit
+8 */About *.md
+8 */Memory.md
+5 People/VIP/
+5 People/Team/
+6 Reviews/Daily/
+6 Reviews/Team/
+6 Reviews/Weekly/
+7 Metrics & KPIs/WBR/
+7 Metrics & KPIs/MBR/
+7 Metrics & KPIs/QBR/
+7 Metrics & KPIs/Anomalies/
+1 Projects/Priority/
+1 Projects/Important/
+1 Projects/Idea Dump/
+2 Areas/Role & Strategy/
+2 Areas/Team/
+2 Areas/Stakeholders/
+2 Areas/Hiring/
+3 Reference/Raw/
+4 Archives/
+Granola/
+
+# Obsidian internals
+.obsidian/workspace*
+.obsidian/cache
+.makemd/
+.space/
+.DS_Store
