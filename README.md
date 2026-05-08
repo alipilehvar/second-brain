@@ -124,6 +124,36 @@ My Second Brain/
 
 ---
 
+## Install the Plugin
+
+### Option A — One line in your terminal (works today)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/alipilehvar/second-brain/main/install.sh | bash
+```
+
+Then open Claude Code in any empty folder and type:
+
+```
+setup-brain
+```
+
+That's it. The wizard runs, asks you 10 questions, and builds everything.
+
+### Option B — Claude Code Marketplace (coming soon)
+
+Once listed in the marketplace, anyone at your company can install it with:
+
+```bash
+claude plugin install second-brain
+```
+
+Or from the Claude Code UI: **Settings → Plugins → Browse → search "second-brain" → Install**
+
+Then type `setup-brain` to run the wizard.
+
+---
+
 ## Full Setup Guide
 
 Follow these steps in order. Takes about 45–60 minutes total.

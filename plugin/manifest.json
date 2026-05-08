@@ -1,0 +1,14 @@
+{
+  "name": "second-brain",
+  "version": "1.0.0",
+  "description": "AI-powered Work OS: PARA vault + LLM Wiki + MCP connections. One command builds your entire second brain.",
+  "author": "Ali Pilehvar",
+  "homepage": "https://github.com/alipilehvar/second-brain",
+  "commands": [
+    {
+      "name": "setup-brain",
+      "description": "Interactive wizard: asks 10 questions and builds your full PARA vault, 25 commands, people pages, wiki, and personalized CLAUDE.md in ~5 minutes.",
+      "file": "setup-brain.md"
+    }
+  ]
+}
