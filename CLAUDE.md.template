@@ -66,6 +66,13 @@ Work second brain for [Full Name], [Role] at [Company].
 18. **Daily Jira `_Index.md` ordering** — always newest first. Manually prepend the new entry line; never append to the bottom.
 19. **Daily `_Index.md` ordering** — same rule: manually prepend each new day's entry above the previous one in `6 Reviews/Daily/_Index.md`. The dataview block handles Obsidian rendering; the manual list handles raw markdown navigation.
 
+## Friday Closeday Rule
+24. **`closeday` on Friday = weekly close** — when run on a Friday, in addition to standard EOD steps, always:
+    - Create `6 Reviews/Weekly/YYYY-Wxx.md` (ISO week number) with: week recap (✅ shipped, ⚠️ carried over, 💡 observations), next week priorities table built from the user's closeday input, Leadership OS score template, NO tracker
+    - Prepend a one-line entry to `6 Reviews/Weekly/_Index.md` (newest first, above the dataview block)
+    - Run `lint` after closeday completes
+    - End the session with a goodbye
+
 ## Automation Hook
 A `SessionStart` hook runs `~/.claude/granola-check.py` at the start of every session. It compares `Granola/Transcripts/*.md` against `~/.claude/granola_indexed.txt` and displays a banner if unindexed transcripts are found. When you see this banner, run `granola` to process them.
 

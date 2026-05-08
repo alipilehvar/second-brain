@@ -223,6 +223,7 @@ Key personalization for each:
 - **alfred**: include VIP/Team names from answers, project tool URL, Granola step
 - **jira/linear/asana**: include board URL from answers; use correct tool name
 - **wbr/mbr**: include Snowflake config if user has it
+- **closeday**: include Friday weekly recap rule — on Fridays, closeday must: (1) create `6 Reviews/Weekly/YYYY-Wxx.md` with week recap + next week priorities from user input, (2) prepend entry to `6 Reviews/Weekly/_Index.md`, (3) run `lint`, (4) say goodbye
 
 ### 2j. Create Wiki Starter Pages
 
