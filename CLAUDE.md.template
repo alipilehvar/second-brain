@@ -1,0 +1,87 @@
+# [YOUR NAME]'S Vault — Claude Operating Manual
+
+Work second brain for [Full Name], [Role] at [Company].
+**First read:** `8 [FIRSTNAME]'S BRAIN/About [First Name].md` · **Schema:** `8 [FIRSTNAME]'S BRAIN/Schema.md`
+
+## Vault Path
+`[absolute path to vault folder]`
+
+## Structure
+| Folder | Purpose |
+|--------|---------|
+| `1 Projects/` | Active work, scored 1-5 → Priority (4-5) / Important (2-3) / Idea Dump (1) |
+| `2 Areas/` | Ongoing responsibilities: Role & Strategy, Team, Stakeholders, Hiring |
+| `3 Reference/Raw/` | Unprocessed drops (web clips, Drive links, notes) |
+| `3 Reference/Wiki/` | Synthesized domain knowledge — cumulative, never overwritten |
+| `4 Archives/` | Completed projects |
+| `5 People/VIP/[Name]/` | Person folder — WIKI + 1:1 prep files. VIPs — surface FIRST ⭐ |
+| `5 People/Team/[Name]/` | Person folder — WIKI + 1:1 prep files. Direct reports — surface SECOND ⭐ |
+| `6 Reviews/Daily/` | Cumulative daily digest (new + open carry-forwards only) — index newest first |
+| `6 Reviews/Daily/Jira/` | Daily Jira/Linear updates — sprint status + stakeholder asks (newest first) |
+| `6 Reviews/Team/` | Team sprint snapshot — separate daily file |
+| `6 Reviews/Weekly/` | Weekly retro + Leadership OS scores |
+| `7 Metrics & KPIs/` | WBR, MBR, QBR, Anomalies, Metric Definitions (SSOT) |
+| `8 [FIRSTNAME]'S BRAIN/` | Schema, About [First Name], Memory, Agents, Command Center |
+| `Granola/` | Raw meeting transcripts — never modify |
+
+## Core Rules
+1. Read `8 [FIRSTNAME]'S BRAIN/About [First Name].md` before acting — every session
+2. Daily notes are cumulative — carry forward unchecked items, never repeat resolved
+3. People pages = single source of truth — update after every interaction
+4. VIP ([VIP names]) + Team ([Team names]) always surface first ⭐
+5. Raw → Wiki only on request via `wikify` — wiki pages accumulate, never overwrite
+6. Commands have no prefix — just type the name — see `8 [FIRSTNAME]'S BRAIN/Command Center.md`
+7. Coach [First Name] to say NO when overcommitting — use `3 Reference/Wiki/Say No Playbook.md`
+8. Flag hedging language in leadership emails
+9. [Tool] board: [Board URL]
+10. **After any structural change** (new command, new folder, new workflow) — update `8 [FIRSTNAME]'S BRAIN/Command Center.md`, `8 [FIRSTNAME]'S BRAIN/Memory.md`, and the relevant `HOW TO BUILD ME/` doc. Keep them in sync always.
+
+## Granola Rules (read from vault — never via MCP)
+11. **All Granola transcripts live in** `Granola/Transcripts/` — read them directly as files. Never rely solely on the MCP for Granola data; the vault is always the source of truth.
+12. **Every transcript must have a date header** — format: `> 📅 **YYYY-MM-DD**` immediately after the `# Transcript for:` heading. Add on first read if missing.
+13. **Index Granola conversations to people pages** — after any 1:1 or named meeting transcript is read:
+    - Add a `### YYYY-MM-DD — [Meeting Title]` entry under `## 1:1 Notes` in the relevant person's page
+    - Include: topics discussed, action items (theirs), action items (mine), key takeaways
+    - Update `## Interactions` log
+    - Update `## Open Action Items`
+14. **Team standups → `5 People/Team/[Team Name] Standups.md`** — append each standup as a new dated section (newest first). Never overwrite. Include: key discussions, decisions, action items table.
+15. **Daily Granola recap in daily note** — at end of each day (or when running `granola` or `alfred`), read all transcripts from that date in `Granola/Transcripts/` and append a `## Granola — [Date]` section to the daily note with: meeting title, TLDR (3–5 bullets), and action items per meeting. Format:
+    ```
+    ## Granola — YYYY-MM-DD
+    ### [Meeting Title]
+    - **TLDR:** ...
+    - **Actions (mine):** ...
+    - **Actions (theirs):** ...
+    ```
+16. **Mark transcripts as indexed** — after completing rules 12–15 for a transcript, append its filename to `~/.claude/granola_indexed.txt` (one filename per line). This prevents the SessionStart hook from flagging it again. Command: `echo "filename.md" >> ~/.claude/granola_indexed.txt`
+
+## People & 1:1 Prep System
+20. **Person folders** — every person with a recurring 1:1 gets a subfolder: `5 People/[area]/[Person Name]/`. Inside: `[Person Name].md` (the WIKI) + `1on1-Prep-YYYY-MM-DD.md` per meeting.
+21. **Person WIKI (`[Name].md`)** — cumulative knowledge base. Sections: About, 1:1 Cadence, 1:1 Notes (newest first), Key Intelligence, Interactions (newest first), Open Action Items, Notes. Never overwrite — always append.
+22. **`1on1` command** — when asked to "prepare for 1:1 with [Person]": read their WIKI + Granola transcripts since last 1:1 + Jira tickets + Slack. Generate `1on1-Prep-[next-date].md` in their folder. After the meeting: update WIKI (append notes, update interactions, check off items).
+23. **Prep file naming:** `1on1-Prep-YYYY-MM-DD.md` always inside the person's folder.
+
+## Jira / Linear Daily Update Rules
+17. **`jira-update` command** — pull sprint status + stakeholder channel for new asks. Write to `6 Reviews/Daily/Jira/YYYY-MM-DD.md`. Sections: New Asks (needs ticket), Sprint Status by person, Sprint Health Summary, Tickets to Create table. Append a one-line summary to `6 Reviews/Daily/Jira/_Index.md` (newest first, manually maintained above the dataview block).
+18. **Daily Jira `_Index.md` ordering** — always newest first. Manually prepend the new entry line; never append to the bottom.
+19. **Daily `_Index.md` ordering** — same rule: manually prepend each new day's entry above the previous one in `6 Reviews/Daily/_Index.md`. The dataview block handles Obsidian rendering; the manual list handles raw markdown navigation.
+
+## Automation Hook
+A `SessionStart` hook runs `~/.claude/granola-check.py` at the start of every session. It compares `Granola/Transcripts/*.md` against `~/.claude/granola_indexed.txt` and displays a banner if unindexed transcripts are found. When you see this banner, run `granola` to process them.
+
+---
+<!-- PERSONALIZATION GUIDE
+Replace every [BRACKETED] value with your own:
+  [Full Name]       → your full name
+  [First Name]      → your first name only (used for folder naming)
+  [FIRSTNAME]       → first name ALL CAPS (e.g. 8 JANE'S BRAIN)
+  [Role]            → your job title
+  [Company]         → your company name
+  [VIP names]       → comma-separated names of your top 2-3 stakeholders
+  [Team names]      → comma-separated names of your direct reports
+  [Tool]            → Jira / Linear / Asana
+  [Board URL]       → your sprint board URL
+  [Team Name]       → your team name (for standups file)
+
+Then delete this comment block.
+-->

@@ -9,6 +9,19 @@
 
 ---
 
+## Start Here — The Concept
+
+Before installing, read one of these to understand what you're building:
+
+| Doc | Format | Best for |
+|-----|--------|---------|
+| [`HOW TO BUILD ME/16 HOW KNOW - Professional Second Brain.md`](HOW%20TO%20BUILD%20ME/16%20HOW%20KNOW%20-%20Professional%20Second%20Brain.md) | Full guide (~780 lines) | Deep understanding — architecture, design principles, full workflow, daily cadence, compound effect |
+| [`HOW TO BUILD ME/17 HOW KNOW - GitHub Gist (Short).md`](HOW%20TO%20BUILD%20ME/17%20HOW%20KNOW%20-%20GitHub%20Gist%20(Short).md) | Short version (~250 lines) | Quick overview — shareable with anyone, paste-into-Claude ready |
+
+> Both include the bootstrap prompt at the bottom — paste it into Claude Code to build everything automatically.
+
+---
+
 ## What This Does
 
 | Layer | What It Is |
@@ -105,6 +118,23 @@ Go to **claude.ai → Settings → Integrations** and connect:
 | Snowflake (optional) | `wbr`, `mbr`, `anomaly`, `deepdive` |
 
 Full instructions: [`HOW TO BUILD ME/05 MCP Connections.md`](HOW%20TO%20BUILD%20ME/05%20MCP%20Connections.md)
+
+---
+
+## CLAUDE.md — The Operating Manual
+
+The `CLAUDE.md` file is what makes Claude a disciplined work partner instead of a generic assistant. It lives at the vault root and is auto-loaded every session.
+
+A full template with all rules is included: [`CLAUDE.md.template`](CLAUDE.md.template)
+
+Key sections:
+- **Core Rules** — cumulative notes, people-page discipline, VIP priority
+- **Granola Rules** — how meeting transcripts get indexed into people pages and daily notes
+- **People & 1:1 Prep System** — per-person WIKI + prep doc conventions
+- **Jira / Linear Rules** — sprint update format and index ordering
+- **Automation Hook** — SessionStart hook that flags unindexed Granola transcripts
+
+The setup wizard (`setup-brain`) generates a personalized version automatically from your answers.
 
 ---
 
