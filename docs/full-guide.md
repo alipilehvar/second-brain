@@ -5,8 +5,8 @@ color: "linear-gradient(90deg, #f11e1e 0%, #ffffff 100%)"
 
 *A pattern for building a living, AI-maintained work OS for knowledge workers and leaders*
 
-**Author:** Ali Pilehvar, Ph.D. · Director, Data Engineering & Analytics @ Xometry
-**Contact:** ali.pilehvar@xometry.com · [LinkedIn](https://www.linkedin.com/in/ali-pilehvar)
+**Author:** Ali Pilehvar
+**Contact:** [LinkedIn](https://www.linkedin.com/in/alipilehvar/) · [Medium](https://alipilevar.medium.com/)
 
 > **Setup time: under 1 hour.** Paste the bootstrap prompt at the bottom into Claude Code, answer 10 questions, and your full second brain is built automatically.
 

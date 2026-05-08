@@ -2,8 +2,8 @@
 
 *PARA + LLM Wiki + Live MCP data. A work OS that gets smarter every day you use it.*
 
-**Author:** Ali Pilehvar, Ph.D. · Director, Data Engineering & Analytics @ Xometry
-**Contact:** ali.pilehvar@xometry.com · [LinkedIn](https://www.linkedin.com/in/ali-pilehvar)
+**Author:** Ali Pilehvar
+**Contact:** [LinkedIn](https://www.linkedin.com/in/alipilehvar/) · [Medium](https://alipilevar.medium.com/)
 
 > Paste the bootstrap prompt at the bottom into Claude Code, answer 10 questions, done. Under 1 hour. Zero coding.
 
