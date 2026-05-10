@@ -95,6 +95,12 @@ Work second brain for [Full Name], [Role] at [Company].
     - Run `lint` after closeday completes
     - End the session with a goodbye
 
+## Relationship Graph Rules
+31. **`graph` command** — regenerates `5 People/Relationship Graph.html` from `5 People/People Intelligence Map.md` and all person WIKI files. Output is a standalone interactive HTML file using vis.js from CDN (no Python, no installs). Opens in browser automatically after generation.
+32. **Auto-suggest `graph` after any influence score change** — whenever an influence score is updated in People Intelligence Map or any `[Name].md` WIKI, end the update with: "Influence score changed — run `graph` to update your relationship visualization."
+33. **Graph encodes:** node size = →[First Name] score, indigo arrows = [First Name]→ person influence, slate arrows = person→ [First Name] influence, gold dashed = org hierarchy. Hover any node for personality, managing edge, watch-out.
+34. **Data tools** — connect via skill commands (e.g. `/snowflake` for Snowflake SSO). Store connection details in `8 [FIRSTNAME]'S BRAIN/About [First Name].md` under Tech Stack.
+
 ## Automation Hook
 A `SessionStart` hook runs `~/.claude/granola-check.py` at the start of every session. It compares `Granola/Transcripts/*.md` against `~/.claude/granola_indexed.txt` and displays a banner if unindexed transcripts are found. When you see this banner, run `granola` to process them.
 
