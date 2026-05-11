@@ -504,6 +504,7 @@ Then: saves ideas to the right location, files follow-ups to People pages, appen
 | `new [name] [1-5]` | Create a new project with priority score |
 | `archive [name]` | Move project to Archives/ with closure summary |
 | `person [name]` | Create or update a People page |
+| `graph` | Regenerate `5 People/Relationship Graph.html` — interactive vis.js network. Node size = their impact on you, indigo arrows = your influence on them, slate arrows = their influence on you, gold dashed = org hierarchy. Hover for personality + watch-out. Opens in browser automatically. |
 | `tldr` | 10-line snapshot of current vault state |
 | `lint` | Full vault health check |
 | `commands` | Print the full command reference |
