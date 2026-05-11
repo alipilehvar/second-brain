@@ -170,6 +170,7 @@ First read: `8 [NAME]'S BRAIN/About [You].md`
 | `new [name] [1-5]` | Create project with priority score |
 | `archive [name]` | Move project to Archives/ with closure summary |
 | `person [name]` | Create or update People page |
+| `graph` | Interactive relationship graph: influence scores, personality, watch-outs — opens in browser |
 | `status [project]` | One-paragraph update ready to share with leadership |
 | `mbr` | Monthly Business Review |
 | `quarterly` | QBR + OKR review |
