@@ -406,23 +406,25 @@ First read: `8 [NAME]'S BRAIN/About [You].md`
 
 ### `alfred` — Morning Briefing
 
-Run every morning. 12 steps automatically:
+Run every morning. All 6 sources checked every run, no exceptions:
 
 1. Read About file for context
 2. Pull Gmail last 24h — VIP/Team first ⭐
 3. Read today's calendar — flag back-to-backs and 6+ meeting days
-4. Scan Slack — DMs and @mentions, VIP/Team first
-5. Check Jira/Linear sprint — your tickets + team progress per person
-6. Read Granola transcripts — yesterday's meeting action items
-7. Carry forward unchecked items from yesterday's daily note
-8. Fetch 3-day weather for your city
-9. Capacity alert if 6+ meetings
-10. Write daily note → `6 Reviews/Daily/YYYY-MM-DD.md`
-10b. Write team sprint snapshot → `6 Reviews/Team/YYYY-MM-DD.md`
-11. Update People pages for anyone you interacted with
-12. End with a Leadership OS coaching nudge
+4. Scan Slack — DMs, @mentions, key channels. VIP/Team first
+5. Check Confluence — pages created/updated last 24h, flag anything needing action
+6. Check Google Drive — files shared or modified by teammates last 24h
+7. Check Jira/Linear sprint — your tickets + team progress per person + new stakeholder requests
+8. Read Granola transcripts — yesterday's meeting action items
+9. Carry forward unchecked items from yesterday's daily note
+10. Fetch 3-day weather for your city
+11. Capacity alert if 6+ meetings
+12. Write daily note → `6 Reviews/Daily/YYYY-MM-DD.md`
+12b. Write team sprint snapshot → `6 Reviews/Team/YYYY-MM-DD.md`
+13. Update People pages for anyone you interacted with
+14. End with a Leadership OS coaching nudge
 
-Output: one structured daily note with Top 3, VIP table, full to-do, calendar with prep notes, email triage, Slack highlights, sprint snapshot, weather, and coaching nudge.
+Output: one structured daily note with Top 3, VIP table, full to-do, calendar with prep notes, email triage, Slack highlights, Confluence updates, Drive updates, sprint snapshot, weather, and coaching nudge.
 
 ---
 
