@@ -525,7 +525,7 @@ Commands handle quick, interactive tasks. Agents are for multi-step, autonomous 
 
 Agent specs live in `8 [YOUR BRAIN]/Agents/`:
 
-**Daily Digest Agent** — triggered by `alfred`. Sources: Gmail + Calendar + Slack + Jira + Granola + yesterday's note. Output: `6 Reviews/Daily/YYYY-MM-DD.md` + team snapshot. Special: VIP/Team surfaced first ⭐.
+**Daily Digest Agent** — triggered by `alfred`. Sources: Gmail + Slack + Calendar + Confluence + Drive + Jira + Granola + yesterday's note. All 6 sources checked every run. Output: `6 Reviews/Daily/YYYY-MM-DD.md` + team snapshot. Special: VIP/Team surfaced first ⭐.
 
 **Anomaly Agent** — triggered by `anomaly`. Sources: Snowflake, Jira, Slack, email. Output: `7 Metrics & KPIs/Anomalies/YYYY-MM-DD-[topic].md`. Includes severity (P1/P2/P3) + next actions.
 
